@@ -2,16 +2,18 @@ package address.data;
 
 public class AddressEntry {
     //Attributes
-    private String firstName;
-    private String lastName;
-    private String street;
-    private String city;
-    private String state;
-    private int zip;
-    private int phone;
-    private String email;
+    private String firstName = "";
+    private String lastName = "";
+    private String street = "";
+    private String city = "";
+    private String state = "";
+    private int zip = 0;
+    private int phone = 0;
+    private String email = "";
 
-    public AddressEntry(){};
+    public AddressEntry(){
+
+    };
     public AddressEntry(String firstName, String lastName, String street, String city, String state, int zip, int phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;

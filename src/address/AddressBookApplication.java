@@ -8,62 +8,71 @@ package address;
 import address.data.AddressBook;
 import address.data.AddressEntry;
 
+import java.awt.*;
 import java.util.Scanner;
 
 class AddressBookApplication {
-
+    //Create a addressbook instance
     static AddressBook ab = new AddressBook();
 
     public static void main(String[] args) {
-//        Menu.prompt_FirstName();
-//        Menu.prompt_LastName();
-//        Menu.prompt_Street();
-//        Menu.prompt_City();
-//        Menu.prompt_State();
-//        Menu.prompt_Zip();
-//        Menu.prompt_Telephone();
-//        Menu.prompt_Email();
+        //call initialize AddressBook AB
         initAddressBook(ab);
     }
 
     public static void initAddressBook(AddressBook obj){
-        //System.out.println("initAddressBookExcerise called");
+        //Input Obj
         Scanner console = new Scanner(System.in);
-        while(true){
-            System.out.println("Create a new entry? (Y/N)");
+        //Loop control
+        Boolean quit = false;
+        //Menu Loop
+        while(quit == false){
+            Menu.displayMenu();
             String choice = console.next();
-            if(choice.equals("Y")) {
-                System.out.println("Please type in your information:");
-                System.out.println("Please type in your first name:");
-                String firstName = console.next();
-                System.out.println("Please type in your last name:");
-                String lastName = console.next();
-                System.out.println("Please type in your Street name:");
-                String street = console.next();
-                System.out.println("Please type in your city name:");
-                String city = console.next();
-                System.out.println("Please type in your state name:");
-                String state = console.next();
-                System.out.println("Please type in your zip code:");
-                int zip = console.nextInt();
-                System.out.println("Please type in your phone number:");
-                int phone = console.nextInt();
-                System.out.println("Please type in your email address:");
-                String email = console.next();
-                AddressEntry newEntry = new AddressEntry(firstName,lastName,street,city,state,zip,phone,email);
-                obj.add(newEntry);
-            }else{
-                break;
+            switch(choice){
+                case "A":
+                case "a":
+                    System.out.println("**load**");
+                    break;
+                case "B":
+                case "b":
+                    //
+                    System.out.println("**Addtion**");
+                    //New contact instance
+                    AddressEntry newContact = new AddressEntry();
+                    //Addition prompts
+                    newContact.setFirstName(Menu.prompt_FirstName());
+                    newContact.setLastName(Menu.prompt_LastName());
+                    newContact.setStreet(Menu.prompt_Street());
+                    newContact.setCity(Menu.prompt_City());
+                    newContact.setState(Menu.prompt_State());
+                    newContact.setZip(Menu.prompt_Zip());
+                    newContact.setPhone(Menu.prompt_Telephone());
+                    newContact.setEmail(Menu.prompt_Email());
+                    //Add new contact into the AddressBook instance
+                    ab.add(newContact);
+                    break;
+                case "C":
+                case "c":
+                    System.out.println("**Remove**");
+                    break;
+                case "D":
+                case "d":
+                    System.out.println("**Finding**");
+                    break;
+                case "E":
+                case "e":
+                    System.out.println("**Listing**");
+                    ab.list();
+                    break;
+                case "F":
+                    case "f":
+                        quit = true;
+                    System.out.println("**Good Bye**");
+                    break;
+                default:  System.out.println("Unexpected value: " + choice);
+
             }
-
         }
-
-        Scanner printChoice = new Scanner(System.in);
-        System.out.println("Print all entries?(Y/N)");
-        String print = printChoice.next();
-        if(print.equals("Y"))
-            obj.list();
-
-
     }
 }
