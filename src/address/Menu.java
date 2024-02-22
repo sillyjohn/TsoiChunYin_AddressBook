@@ -69,10 +69,10 @@ public class Menu {
         return in;
     }
 
-    public static int prompt_Telephone() {
+    public static String prompt_Telephone() {
         System.out.println("Telephone:");
         Scanner key = new Scanner(System.in);
-        int in = key.nextInt();
+        String in = key.nextLine();
         return in;
     }
 

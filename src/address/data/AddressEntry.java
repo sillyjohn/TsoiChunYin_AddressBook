@@ -8,13 +8,13 @@ public class AddressEntry {
     private String city = "";
     private String state = "";
     private int zip = 0;
-    private int phone = 0;
+    private String phone = "";
     private String email = "";
 
     public AddressEntry(){
 
     };
-    public AddressEntry(String firstName, String lastName, String street, String city, String state, int zip, int phone, String email) {
+    public AddressEntry(String firstName, String lastName, String street, String city, String state, int zip, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
@@ -26,14 +26,11 @@ public class AddressEntry {
     }
     //ToString
     public String toString(){
-        return "First Name: "+firstName+
-                "Last Name: "+lastName+
-                "Street: "+street+
-                "City: "+city+
-                "State: "+state+
-                "Zip: "+zip+
-                "Phone: "+phone+
-                "Email address: "+email;
+        return  firstName + " " + lastName+
+                street + "\n" +
+                city + ", " + state + " "+ zip +"\n"+
+                email+"\n"+
+                phone;
     }
     //Getter
     public String getFirstName() {
@@ -60,7 +57,7 @@ public class AddressEntry {
         return zip;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -92,7 +89,7 @@ public class AddressEntry {
         this.zip = zip;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

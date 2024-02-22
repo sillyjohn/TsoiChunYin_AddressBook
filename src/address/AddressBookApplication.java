@@ -8,7 +8,6 @@ package address;
 import address.data.AddressBook;
 import address.data.AddressEntry;
 
-import java.awt.*;
 import java.util.Scanner;
 
 class AddressBookApplication {
@@ -33,6 +32,7 @@ class AddressBookApplication {
                 case "A":
                 case "a":
                     System.out.println("**load**");
+                    ab.readFromFile("src/address/test.txt");
                     break;
                 case "B":
                 case "b":
@@ -63,6 +63,7 @@ class AddressBookApplication {
                 case "E":
                 case "e":
                     System.out.println("**Listing**");
+                    System.out.println("There are total "+ ab.getNumberOfContact()+ " of contacts.");
                     ab.list();
                     break;
                 case "F":
@@ -70,7 +71,7 @@ class AddressBookApplication {
                         quit = true;
                     System.out.println("**Good Bye**");
                     break;
-                default:  System.out.println("Unexpected value: " + choice);
+                default:  System.out.println("Unexpected value: " + choice+ ". Please try again...");
 
             }
         }
