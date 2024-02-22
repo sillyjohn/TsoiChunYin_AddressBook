@@ -18,7 +18,7 @@ public class AddressBook {
         int i=1;
         for (AddressEntry entry : addressEntryList.values()) {
             System.out.println(i+":");
-            System.out.println(entry); // Implicitly calls entry.toString()
+            System.out.print(entry); // Implicitly calls entry.toString()
             i++;
         }
     }
@@ -38,8 +38,7 @@ public class AddressBook {
     //Read input from files
     public void readFromFile(String fileName){
         File file = new File(fileName);
-
-
+            //File Reading Loop
             try {
                 Scanner content = new Scanner(file);
                 while (content.hasNextLine()) {
@@ -56,6 +55,7 @@ public class AddressBook {
                         //Parse street name
                         if(content.hasNextLine()){
                             String streetName = content.nextLine().trim();
+                            newEntry.setStreet(streetName);
                         }
                         //Parse city, state, and zip
                         //since they are in same line, it has to be parsed into different word
@@ -80,10 +80,6 @@ public class AddressBook {
                         addressEntryList.put(newEntry.getLastName(),newEntry);
                         //book keeping
                         numberOfContact++;
-                        //testing
-                        //System.out.println(newEntry.getFirstName());
-                        //list();
-
                     }
                 }
                 content.close();
@@ -98,7 +94,8 @@ public class AddressBook {
 
 
     public void find(){
-
+        Scanner input = new Scanner(System.in);
+        String searchInput = input.nextLine().trim();
     }
     public int getNumberOfContact(){
         return numberOfContact;

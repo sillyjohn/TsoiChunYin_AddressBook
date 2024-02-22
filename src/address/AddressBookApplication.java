@@ -11,21 +11,21 @@ import address.data.AddressEntry;
 import java.util.Scanner;
 
 class AddressBookApplication {
-    //Create a addressbook instance
+    //Create an AddressBook instance
     static AddressBook ab = new AddressBook();
 
     public static void main(String[] args) {
         //call initialize AddressBook AB
-        initAddressBook(ab);
+        initAddressBook();
     }
 
-    public static void initAddressBook(AddressBook obj){
+    public static void initAddressBook(){
         //Input Obj
         Scanner console = new Scanner(System.in);
         //Loop control
-        Boolean quit = false;
+        boolean quit = false;
         //Menu Loop
-        while(quit == false){
+        while(!quit){
             Menu.displayMenu();
             String choice = console.next();
             switch(choice){
@@ -59,6 +59,8 @@ class AddressBookApplication {
                 case "D":
                 case "d":
                     System.out.println("**Finding**");
+                    System.out.println("Please type contact's last name:");
+                    ab.find();
                     break;
                 case "E":
                 case "e":

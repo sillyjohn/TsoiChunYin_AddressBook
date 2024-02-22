@@ -13,7 +13,7 @@ public class AddressEntry {
 
     public AddressEntry(){
 
-    };
+    }
     public AddressEntry(String firstName, String lastName, String street, String city, String state, int zip, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,11 +26,11 @@ public class AddressEntry {
     }
     //ToString
     public String toString(){
-        return  firstName + " " + lastName+
+        return  firstName + " " +lastName+"\n"+
                 street + "\n" +
                 city + ", " + state + " "+ zip +"\n"+
                 email+"\n"+
-                phone;
+                phone+"\n";
     }
     //Getter
     public String getFirstName() {
