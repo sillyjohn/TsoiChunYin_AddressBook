@@ -30,56 +30,48 @@ public class Menu {
     public static String prompt_FirstName() {
         System.out.println("First Name:");
         Scanner key = new Scanner(System.in);
-        String in = key.nextLine();
-        return in;
+        return key.nextLine();
     }
 
     public static String prompt_LastName() {
         System.out.println("Last Name:");
         Scanner key = new Scanner(System.in);
-        String in = key.nextLine();
-        return in;
+        return key.nextLine();
     }
 
     public static String prompt_Street() {
         System.out.println("Street:");
         Scanner key = new Scanner(System.in);
-        String in = key.nextLine();
-        return in;
+        return key.nextLine();
     }
 
     public static String prompt_City() {
         System.out.println("City:");
         Scanner key = new Scanner(System.in);
-        String in = key.nextLine();
-        return in;
+        return key.nextLine();
     }
 
     public static String prompt_State() {
         System.out.println("State:");
         Scanner key = new Scanner(System.in);
-        String in = key.nextLine();
-        return in;
+        return key.nextLine();
     }
 
     public static int prompt_Zip() {
         System.out.println("Zip:");
         Scanner key = new Scanner(System.in);
-        int in = key.nextInt();
-        return in;
+        return key.nextInt();
     }
 
     public static String prompt_Telephone() {
         System.out.println("Telephone:");
         Scanner key = new Scanner(System.in);
-        String in = key.nextLine();
-        return in;
+        return key.nextLine();
     }
 
     public static String prompt_Email() {
         System.out.println("Email:");
         Scanner key = new Scanner(System.in);
-        String in = key.nextLine();
-        return in;
+        return key.nextLine();
     }
 }

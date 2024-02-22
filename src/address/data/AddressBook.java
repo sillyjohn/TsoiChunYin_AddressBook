@@ -4,8 +4,9 @@ import java.io.*;
 
 public class AddressBook {
     //Attribute
-    private int numberOfContact = 0;
     private final TreeMap<String, AddressEntry> addressEntryList = new TreeMap<>();
+    private int numberOfContact = addressEntryList.size();
+
     List<AddressEntry> addressBook = new ArrayList<AddressEntry>();
     //constructor
     public AddressBook() {
@@ -26,13 +27,31 @@ public class AddressBook {
     //Add new contact into the address book tree map
     public void add(AddressEntry obj){
         //add new addressEntry obj to the addressEntry List
-        addressBook.add(obj);
         addressEntryList.put(obj.getLastName(),obj);
-        numberOfContact++;
+        System.out.println("--Contact added--");
     }
 
-    public void remove(String target){
-
+    public void remove(String searchInput){
+        if(addressEntryList.containsKey(searchInput)){
+            System.out.println("--This is the contact with last name: "+searchInput+"--");
+            System.out.println(addressEntryList.get(searchInput));
+            System.out.println("DO YOU WANT TO REMOVE THE CONTACT ABOVE? (YES/NO):");
+            Scanner input = new Scanner(System.in);
+            String choice = input.next().trim();
+            input.nextLine();// This line clears the buffer
+            switch (choice){
+                case "YES":
+                    addressEntryList.remove(searchInput);
+                    System.out.println("--Contact Removed--");
+                    break;
+                case "NO":
+                    break;
+                default:
+                    System.out.println("Input Must use all UPPER CASE. Please Try Again.");
+            }
+        }else{
+            System.out.println("Last name that you are searching does not exist...");
+        }
     }
 
     //Read input from files
@@ -78,8 +97,6 @@ public class AddressBook {
                         }
                         //put into addressbook
                         addressEntryList.put(newEntry.getLastName(),newEntry);
-                        //book keeping
-                        numberOfContact++;
                     }
                 }
                 content.close();
@@ -93,9 +110,16 @@ public class AddressBook {
     }
 
 
-    public void find(){
-        Scanner input = new Scanner(System.in);
-        String searchInput = input.nextLine().trim();
+    public boolean find(String searchInput){
+        if(addressEntryList.containsKey(searchInput)){
+            System.out.println("--This is the contact with last name: "+searchInput+"--");
+            System.out.println(addressEntryList.get(searchInput));
+            return true;
+        }else{
+            System.out.println("Last name that you are searching does not exist...");
+            return false;
+        }
+
     }
     public int getNumberOfContact(){
         return numberOfContact;

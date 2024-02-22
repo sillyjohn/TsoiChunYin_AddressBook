@@ -28,10 +28,13 @@ class AddressBookApplication {
         while(!quit){
             Menu.displayMenu();
             String choice = console.next();
+            console.nextLine(); // This line clears the buffer
             switch(choice){
                 case "A":
                 case "a":
                     System.out.println("**load**");
+                    Scanner input = new Scanner(System.in);
+                    String searchInput = input.nextLine().trim();
                     ab.readFromFile("src/address/test.txt");
                     break;
                 case "B":
@@ -55,12 +58,18 @@ class AddressBookApplication {
                 case "C":
                 case "c":
                     System.out.println("**Remove**");
+                    System.out.println("Please type contact's last name:");
+                    input = new Scanner(System.in);
+                    searchInput = input.nextLine().trim();
+                    ab.remove(searchInput);
                     break;
                 case "D":
                 case "d":
                     System.out.println("**Finding**");
                     System.out.println("Please type contact's last name:");
-                    ab.find();
+                    input = new Scanner(System.in);
+                    searchInput = input.nextLine().trim();
+                    ab.find(searchInput);
                     break;
                 case "E":
                 case "e":
