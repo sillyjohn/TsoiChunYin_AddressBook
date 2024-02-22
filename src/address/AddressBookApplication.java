@@ -37,7 +37,7 @@ class AddressBookApplication {
                 case "B":
                 case "b":
                     //
-                    System.out.println("**Addtion**");
+                    System.out.println("**Addition**");
                     //New contact instance
                     AddressEntry newContact = new AddressEntry();
                     //Addition prompts
