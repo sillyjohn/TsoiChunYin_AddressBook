@@ -35,7 +35,7 @@ class AddressBookApplication {
                     System.out.println("**load**");
                     Scanner input = new Scanner(System.in);
                     String searchInput = input.nextLine().trim();
-                    ab.readFromFile("src/address/test.txt");
+                    ab.readFromFile(searchInput);
                     break;
                 case "B":
                 case "b":
