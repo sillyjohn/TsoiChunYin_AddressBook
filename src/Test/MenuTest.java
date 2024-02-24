@@ -1,6 +1,8 @@
-package address;
+package Test;
 
+import address.Menu;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -41,7 +43,7 @@ class MenuTest {
     void testPrompt_FirstName() {
         String firstName = "John";
         provideInput(firstName + "\n"); // Simulate user entering "John" then pressing Enter
-        assertEquals(firstName, Menu.prompt_FirstName(), "The method did not return the expected first name.");
+        Assertions.assertEquals(firstName, Menu.prompt_FirstName(), "The method did not return the expected first name.");
     }
 
     @Test
