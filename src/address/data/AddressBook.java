@@ -1,13 +1,16 @@
 package address.data;
+import com.sun.source.tree.Tree;
+import com.sun.source.util.Trees;
+
 import java.util.*;
+import java.util.TreeSet;
 import java.io.*;
 
 public class AddressBook {
     //Attribute
-    private final TreeMap<String, AddressEntry> addressEntryList = new TreeMap<>();
+    private TreeMap<String, TreeSet<AddressEntry>> addressEntryList = new TreeMap<>();
     private int numberOfContact = addressEntryList.size();
 
-    List<AddressEntry> addressBook = new ArrayList<AddressEntry>();
     //constructor
     public AddressBook() {
         System.out.println("AddressBook instance created");
@@ -17,42 +20,89 @@ public class AddressBook {
         //iterate through addressEntry List and
         //for each item call toString and print out
         int i=1;
-        for (AddressEntry entry : addressEntryList.values()) {
-            System.out.println(i+":");
-            System.out.print(entry); // Implicitly calls entry.toString()
-            i++;
+        for (TreeSet<AddressEntry> entry : addressEntryList.values()) {
+            for(AddressEntry singleContact : entry) {
+                System.out.println(i + ":");
+                System.out.print(singleContact); // Implicitly calls entry.toString()
+                i++;
+            }
         }
     }
 
     //Add new contact into the address book tree map
-    public void add(AddressEntry obj){
-        //add new addressEntry obj to the addressEntry List
-        addressEntryList.put(obj.getLastName(),obj);
-        System.out.println("--Contact added--");
+    public void add(AddressEntry newEntry) {
+        // Get the last name of the new entry to use as the key
+        String lastName = newEntry.getLastName();
+
+        // Check if there's already a TreeSet for this last name
+        TreeSet<AddressEntry> entries = addressEntryList.get(lastName);
+        if (entries == null) {
+            // If not, create a new TreeSet and add the entry
+            entries = new TreeSet<>();
+            entries.add(newEntry);
+            // Put the new TreeSet in the TreeMap with the last name as the key
+            addressEntryList.put(lastName, entries);
+        } else {
+            // If there's already a TreeSet, just add the new entry to it
+            entries.add(newEntry);
+        }
     }
 
+
     public void remove(String searchInput){
-        if(addressEntryList.containsKey(searchInput)){
-            System.out.println("--This is the contact with last name: "+searchInput+"--");
-            System.out.println(addressEntryList.get(searchInput));
-            System.out.println("DO YOU WANT TO REMOVE THE CONTACT ABOVE? (YES/NO):");
-            Scanner input = new Scanner(System.in);
-            String choice = input.next().trim();
-            input.nextLine();// This line clears the buffer
-            switch (choice){
-                case "YES":
-                    addressEntryList.remove(searchInput);
+        //uncap all key and input
+        //use .startsWith for the compare
+        String unCapInput = searchInput.toLowerCase();
+        boolean printed = false;
+        ArrayList<AddressEntry>choiceArray = new ArrayList<>();
+        int i =0;
+        //Get all entries
+        Set<Map.Entry<String, TreeSet<AddressEntry>> > entries = addressEntryList.entrySet();
+        System.out.println("--This is the contact with last name: "+ searchInput+"--");
+        //Iterate all Entries
+        for (Map.Entry<String, TreeSet<AddressEntry>> entry : entries) {
+            //Compare last name with input
+            if(entry.getKey().toLowerCase().startsWith(unCapInput)){
+                //Print all related contact
+                printed = true;
+                for(AddressEntry singleContact : entry.getValue()){
+                    System.out.println(i+1+":");
+                    System.out.println(singleContact);
+                    //push related into the choiceArray
+                    choiceArray.add(singleContact);
+                    i++;
+                }
+            }
+        }
+        if(!printed) {
+            System.out.println("No Found Contact.");
+            return;
+        }
+        System.out.println("DO YOU WANT TO REMOVE THE CONTACT ABOVE? (YES/NO):");
+        Scanner input = new Scanner(System.in);
+        String choice = input.next().trim();
+        input.nextLine();// This line clears the buffer
+        switch (choice){
+            case "Yes":
+            case "YES":
+                    //Remove From
+                    System.out.println("Type the number of the contact to remove:");
+                    int removeNumber = input.nextInt() -1;
+                    input.nextLine();//clears the buffer
+                    TreeSet<AddressEntry> ptr = addressEntryList.get(choiceArray.get(removeNumber).getLastName());
+                    ptr.remove(choiceArray.get(removeNumber));
+                    if(ptr.size() == 0){
+                        addressEntryList.remove(choiceArray.get(removeNumber).getLastName());
+                    }
                     System.out.println("--Contact Removed--");
                     break;
                 case "NO":
                     break;
                 default:
-                    System.out.println("Input Must use all UPPER CASE. Please Try Again.");
+                    System.out.println("Input Must use all UPPER CASE OR START WITH UPPER CASE. Please Try Again.");
             }
-        }else{
-            System.out.println("Last name that you are searching does not exist...");
-        }
     }
+    //TreeSet Empty Check
 
     //Read input from files
     public void readFromFile(String fileName){
@@ -96,7 +146,7 @@ public class AddressBook {
                             newEntry.setPhone(phone); // Assuming setPhone now accepts a String
                         }
                         //put into addressbook
-                        addressEntryList.put(newEntry.getLastName(),newEntry);
+                        add(newEntry);
                     }
                 }
                 content.close();
@@ -110,17 +160,28 @@ public class AddressBook {
     }
 
 
-    public boolean find(String searchInput){
-        if(addressEntryList.containsKey(searchInput)){
-            System.out.println("--This is the contact with last name: "+searchInput+"--");
-            System.out.println(addressEntryList.get(searchInput));
-            return true;
-        }else{
-            System.out.println("Last name that you are searching does not exist...");
-            return false;
+    public void find(String searchInput){
+        //uncap all key and input
+        //use .startsWith for the compare
+        String unCapInput = searchInput.toLowerCase();
+        boolean printed = false;
+        //Get all entries
+        Set<Map.Entry<String, TreeSet<AddressEntry>> > entries = addressEntryList.entrySet();
+        System.out.println("--This is the contact with last name: "+ searchInput+"--");
+        //Iterate all Entries
+        for (Map.Entry<String, TreeSet<AddressEntry>> entry : entries) {
+            //Compare last name with input
+            if(entry.getKey().toLowerCase().startsWith(unCapInput)){
+                //Print all related contact
+                printed = true;
+                for(AddressEntry singleContact : entry.getValue()){
+                    System.out.println(singleContact);
+                }
+            }
         }
-
+        if(!printed) System.out.println("Contact Not Found.");
     }
+    //Return number of contact in the contactbook
     public int getNumberOfContact(){
         return numberOfContact;
     }

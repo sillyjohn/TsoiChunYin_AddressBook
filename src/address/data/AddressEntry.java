@@ -1,6 +1,6 @@
 package address.data;
 
-public class AddressEntry {
+public class AddressEntry implements Comparable<AddressEntry> {
     //Attributes
     private String firstName = "";
     private String lastName = "";
@@ -14,6 +14,7 @@ public class AddressEntry {
     public AddressEntry(){
 
     }
+
     public AddressEntry(String firstName, String lastName, String street, String city, String state, int zip, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,6 +24,11 @@ public class AddressEntry {
         this.zip = zip;
         this.phone = phone;
         this.email = email;
+    }
+    public int compareTo(AddressEntry other) {
+        // Compare by lastName, then by firstName for tie-breaking
+        int lastNameComp = this.lastName.compareTo(other.lastName);
+        return (lastNameComp != 0) ? lastNameComp : this.firstName.compareTo(other.firstName);
     }
     //ToString
     public String toString(){
