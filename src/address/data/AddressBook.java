@@ -9,11 +9,10 @@ import java.io.*;
 public class AddressBook {
     //Attribute
     private TreeMap<String, TreeSet<AddressEntry>> addressEntryList = new TreeMap<>();
-    private int numberOfContact = addressEntryList.size();
+    private int numberOfContact = 0;
 
     //constructor
     public AddressBook() {
-        System.out.println("AddressBook instance created");
     }
     //Methods
     public void list(){
@@ -46,6 +45,8 @@ public class AddressBook {
             // If there's already a TreeSet, just add the new entry to it
             entries.add(newEntry);
         }
+
+        numberOfContact = addressEntryList.size();
     }
 
 
@@ -83,6 +84,7 @@ public class AddressBook {
         String choice = input.next().trim();
         input.nextLine();// This line clears the buffer
         switch (choice){
+            case "yes":
             case "Yes":
             case "YES":
                     //Remove From
@@ -91,7 +93,7 @@ public class AddressBook {
                     input.nextLine();//clears the buffer
                     TreeSet<AddressEntry> ptr = addressEntryList.get(choiceArray.get(removeNumber).getLastName());
                     ptr.remove(choiceArray.get(removeNumber));
-                    if(ptr.size() == 0){
+                    if(ptr.isEmpty()){
                         addressEntryList.remove(choiceArray.get(removeNumber).getLastName());
                     }
                     System.out.println("--Contact Removed--");
@@ -101,9 +103,10 @@ public class AddressBook {
                 default:
                     System.out.println("Input Must use all UPPER CASE OR START WITH UPPER CASE. Please Try Again.");
             }
+
+            numberOfContact = addressEntryList.size();
     }
     //TreeSet Empty Check
-
     //Read input from files
     public void readFromFile(String fileName){
         File file = new File(fileName);
@@ -149,6 +152,7 @@ public class AddressBook {
                         add(newEntry);
                     }
                 }
+                numberOfContact = addressEntryList.size();
                 content.close();
                 System.out.println("Successfully Loaded!");
             } catch (FileNotFoundException e) {
