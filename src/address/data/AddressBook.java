@@ -1,20 +1,24 @@
 package address.data;
-import com.sun.source.tree.Tree;
-import com.sun.source.util.Trees;
-
 import java.util.*;
 import java.util.TreeSet;
 import java.io.*;
 
+/**
+ * AddressBook Class Contains two fields: a TreeMap dataStructure to store data and an Int variable to store number of contact
+ */
 public class AddressBook {
-    //Attribute
-    private TreeMap<String, TreeSet<AddressEntry>> addressEntryList = new TreeMap<>();
+    private final TreeMap<String, TreeSet<AddressEntry>> addressEntryList = new TreeMap<>();
     private int numberOfContact = 0;
 
-    //constructor
+    /**
+     * Default Constructor
+     */
     public AddressBook() {
     }
-    //Methods
+
+    /**
+     * Print out all entries inside the TreeMap
+     */
     public void list(){
         //iterate through addressEntry List and
         //for each item call toString and print out
@@ -28,7 +32,10 @@ public class AddressBook {
         }
     }
 
-    //Add new contact into the address book tree map
+    /**
+     * Method to append new AddressEntry into the TreeMap
+     * @param newEntry  AddressEntry Object
+     */
     public void add(AddressEntry newEntry) {
         // Get the last name of the new entry to use as the key
         String lastName = newEntry.getLastName();
@@ -50,6 +57,10 @@ public class AddressBook {
     }
 
 
+    /**
+     * Method to remove one AddressEntry from TreeMap
+     * @param searchInput String Input
+     */
     public void remove(String searchInput){
         //uncap all key and input
         //use .startsWith for the compare
@@ -106,6 +117,11 @@ public class AddressBook {
 
             numberOfContact = addressEntryList.size();
     }
+
+    /**
+     * Method to load content from a .txt file into the TreeMap
+     * @param fileName String input
+     */
     //TreeSet Empty Check
     //Read input from files
     public void readFromFile(String fileName){
@@ -164,6 +180,10 @@ public class AddressBook {
     }
 
 
+    /**
+     * Method to find from TreeMap
+     * @param searchInput String input
+     */
     public void find(String searchInput){
         //uncap all key and input
         //use .startsWith for the compare
@@ -185,7 +205,11 @@ public class AddressBook {
         }
         if(!printed) System.out.println("Contact Not Found.");
     }
-    //Return number of contact in the contactbook
+
+    /**
+     * Getter Method to get the number of contact inside the treeMap in total
+     * @return numberOfContact: Int
+     */
     public int getNumberOfContact(){
         return numberOfContact;
     }

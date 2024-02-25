@@ -1,5 +1,8 @@
 package address.data;
 
+/**
+ * AddressEntry Class contains information of each contact
+ */
 public class AddressEntry implements Comparable<AddressEntry> {
     /**
      * First name of the entry
@@ -87,7 +90,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Getter function for firstName attribute
+     * Getter method for firstName attribute
      * @return firstName
      */
     public String getFirstName() {
@@ -95,7 +98,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Getter function for lastName attribute
+     * Getter method for lastName attribute
      * @return lastName
      */
     public String getLastName() {
@@ -103,7 +106,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Getter function for street attribute
+     * Getter method for street attribute
      * @return street
      */
     public String getStreet() {
@@ -111,7 +114,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Getter function for city attribute
+     * Getter method for city attribute
      * @return city
      */
     public String getCity() {
@@ -119,7 +122,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Getter function for state attribute
+     * Getter method for state attribute
      * @return state
      */
     public String getState() {
@@ -127,7 +130,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Getter function for zip attribute
+     * Getter method for zip attribute
      * @return zip
      */
     public int getZip() {
@@ -135,7 +138,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Getter function for phone attribute
+     * Getter method for phone attribute
      * @return phone
      */
     public String getPhone() {
@@ -143,7 +146,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Getter function for email attribute
+     * Getter method for email attribute
      * @return email
      */
     public String getEmail() {
@@ -151,7 +154,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Setter function for firstName attributes
+     * Setter method for firstName attributes
      * @param firstName A String input to set firstName attribute
      */
     //Setters
@@ -160,7 +163,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Setter function for lastName attributes
+     * Setter method for lastName attributes
      * @param lastName A String input to set lastName attribute
      */
     public void setLastName(String lastName) {
@@ -168,7 +171,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Setter function for street attributes
+     * Setter method for street attributes
      * @param street A String input to set street attribute
      */
     public void setStreet(String street) {
@@ -176,7 +179,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Setter function for city attributes
+     * Setter method for city attributes
      * @param city A String input to set city attribute
      */
     public void setCity(String city) {
@@ -184,7 +187,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Setter function for state attributes
+     * Setter method for state attributes
      * @param state A String input to set state attribute
      */
     public void setState(String state) {
@@ -192,7 +195,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Setter function for zip attributes
+     * Setter method for zip attributes
      * @param zip An Int input to set zip attribute
      */
     public void setZip(int zip) {
@@ -200,7 +203,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Setter function for phone attributes
+     * Setter method for phone attributes
      * @param phone A String input to set phone attribute
      */
     public void setPhone(String phone) {
@@ -208,7 +211,7 @@ public class AddressEntry implements Comparable<AddressEntry> {
     }
 
     /**
-     * Setter function for email attributes
+     * Setter method for email attributes
      * @param email A String input to set email attribute
      */
     public void setEmail(String email) {

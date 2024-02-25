@@ -10,6 +10,9 @@ import address.data.AddressEntry;
 
 import java.util.Scanner;
 
+/**
+ * Main Method to initialize an AddressBook instance and call initAddressBook() method
+ */
 class AddressBookApplication {
     //Create an AddressBook instance
     static AddressBook ab = new AddressBook();
@@ -19,6 +22,9 @@ class AddressBookApplication {
         initAddressBook();
     }
 
+    /**
+     * Method accept input and call different Class's method
+     */
     public static void initAddressBook(){
         //Input Obj
         Scanner console = new Scanner(System.in);
