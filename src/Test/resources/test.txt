@@ -1,0 +1,37 @@
+1:
+Jane Beppson
+1231 Fun St.
+Oakland, CA 12345
+fun@gmail.com
+323-234-5623
+2:
+Maddie Felix
+2 Fifth Street
+Hayward, CA 95010
+felix@yahoo.com
+510-234-5678
+2:
+John Tsoi
+12312 jsd st
+ok, CA 1231231
+@gmail.com
+323123123
+3:
+Apple A
+1231 Fun St.
+Oakland, CA 12345
+fun@gmail.com
+323-234-5623
+5:
+Cpple A
+1231 Fun St.
+Oakland, CA 12345
+fun@gmail.com
+323-234-5623
+4:
+Bpple A
+1231 Fun St.
+Oakland, CA 12345
+fun@gmail.com
+323-234-5623
+

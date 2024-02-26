@@ -52,8 +52,7 @@ public class AddressBook {
             // If there's already a TreeSet, just add the new entry to it
             entries.add(newEntry);
         }
-
-        numberOfContact = addressEntryList.size();
+        numberOfContact++;
     }
 
 
@@ -115,7 +114,7 @@ public class AddressBook {
                     System.out.println("Input Must use all UPPER CASE OR START WITH UPPER CASE. Please Try Again.");
             }
 
-            numberOfContact = addressEntryList.size();
+            numberOfContact --;
     }
 
     /**
@@ -168,7 +167,6 @@ public class AddressBook {
                         add(newEntry);
                     }
                 }
-                numberOfContact = addressEntryList.size();
                 content.close();
                 System.out.println("Successfully Loaded!");
             } catch (FileNotFoundException e) {

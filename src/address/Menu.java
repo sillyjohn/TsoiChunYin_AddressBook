@@ -90,7 +90,7 @@ public class Menu {
     public static int prompt_Zip() {
         System.out.println("Zip:");
         Scanner key = new Scanner(System.in);
-        return key.nextInt();
+        return Integer.parseInt(key.toString());
     }
 
     /**
