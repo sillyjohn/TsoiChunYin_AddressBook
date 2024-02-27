@@ -12,31 +12,62 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class test AddressBook Class
+ */
 class AddressBookTest {
 
+
+    /**
+     * Object declaration
+     */
     AddressBook addressBook;
+    /**
+     * Object declaration
+     */
     private final InputStream systemIn = System.in;
-    private final PrintStream originalOut = System.out;
+    /**
+     * Object declaration for redirecting system in
+     */
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
 
+    /**
+     * Initialize a AddressBook Instance
+     */
     @BeforeEach
     void setUp() {
         addressBook = new AddressBook();
     }
 
+    /**
+     * Provide a dummy input to tested method
+     * @param data
+     */
     void provideInput(String data) {
         ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
         System.setIn(testIn);
     }
+
+    /**
+     * Redirect System.In to normal
+     */
     @AfterEach
     public void restoreSystemInputOutput() {
         System.setIn(systemIn);
     }
+
+    /**
+     * Redirect Output Stream
+     */
     @BeforeEach
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
     }
+
+    /**
+     * Method test the add() and find()
+     */
     @Test
     void testAddAndFindContact() {
         AddressEntry entry = new AddressEntry("John", "Doe", "123 Main St", "Anytown", "State", 12345, "email@example.com", "123-456-7890");
@@ -44,6 +75,9 @@ class AddressBookTest {
         addressBook.find("Doe");
     }
 
+    /**
+     * Method to test remove()
+     */
     @Test
     void testRemoveContact() {
         AddressEntry entry = new AddressEntry("Jane", "Doe", "124 Main St", "Anytown", "State", 12345, "jane.doe@example.com", "123-456-7891");
@@ -58,6 +92,9 @@ class AddressBookTest {
         assertEquals(0, addressBook.getNumberOfContact());
     }
 
+    /**
+     * Method to test readFromFile()
+     */
     @Test
     void testReadFromFile() {
         // Setup a test file with known content
@@ -68,12 +105,20 @@ class AddressBookTest {
         // The exact assertions will depend on the implementation details of your AddressBook class
         assertTrue(addressBook.getNumberOfContact() > 0);
     }
+
+    /**
+     * Method to test getterFunction of numberOfContact
+     */
     @Test
     void testGetNumberOfContact(){
         String testFilePath = "src/Test/resources/textAddressBook.txt";
         addressBook.readFromFile(testFilePath);
         assertTrue(addressBook.getNumberOfContact() == 2);
     }
+
+    /**
+     * Method to list()
+     */
     @Test
     void testListing(){
         String expectedOutput ="Successfully Loaded!\n"+
@@ -93,8 +138,5 @@ class AddressBookTest {
         addressBook.readFromFile(testFilePath);
         addressBook.list();
         assertLinesMatch(expectedOutput.lines(), outContent.toString().lines());
-
-
-
     }
 }

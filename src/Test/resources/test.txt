@@ -10,13 +10,13 @@ Maddie Felix
 Hayward, CA 95010
 felix@yahoo.com
 510-234-5678
-2:
+3:
 John Tsoi
 12312 jsd st
 ok, CA 1231231
 @gmail.com
 323123123
-3:
+4:
 Apple A
 1231 Fun St.
 Oakland, CA 12345
@@ -28,7 +28,7 @@ Cpple A
 Oakland, CA 12345
 fun@gmail.com
 323-234-5623
-4:
+6:
 Bpple A
 1231 Fun St.
 Oakland, CA 12345

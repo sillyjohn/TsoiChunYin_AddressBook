@@ -67,7 +67,6 @@ class AddressBookApplication {
                     System.out.println("Please type contact's last name:");
                     input = new Scanner(System.in);
                     searchInput = input.nextLine().trim();
-                    ab.find(searchInput);
                     ab.remove(searchInput);
                     break;
                 case "D":
